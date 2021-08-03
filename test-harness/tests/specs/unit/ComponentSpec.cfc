@@ -340,7 +340,11 @@ component extends="coldbox.system.testing.BaseTestCase" {
 						eventName  = "event2",
 						parameters = { "hello" : "world" }
 					);
-					wireRequest.$( "getWireComponent", componentObj, false );
+					wireRequest.$(
+						"getWireComponent",
+						componentObj,
+						false
+					);
 
 					var memento = wireRequest.getMemento();
 					expect( memento.effects.emits ).toBeArray();
@@ -479,21 +483,33 @@ component extends="coldbox.system.testing.BaseTestCase" {
 
 					rc[ "serverMemo" ] = { "data" : { "hello" : "world" } };
 					componentObj.$( "setHello", true );
-					wireRequest.$( "getWireComponent", componentObj, false );
+					wireRequest.$(
+						"getWireComponent",
+						componentObj,
+						false
+					);
 					wireRequest.hydrate();
 					expect( componentObj.$once( "setHello" ) ).toBeTrue();
 				} );
 
 				it( "fires 'preHydrate' event", function(){
 					componentObj.$( "$preHydrate", true );
-					wireRequest.$( "getWireComponent", componentObj, false );
+					wireRequest.$(
+						"getWireComponent",
+						componentObj,
+						false
+					);
 					wireRequest.hydrate();
 					expect( componentObj.$once( "$preHydrate" ) ).toBeTrue();
 				} );
 
 				it( "fires 'postHydrate' event", function(){
 					componentObj.$( "$postHydrate", true );
-					wireRequest.$( "getWireComponent", componentObj, false );
+					wireRequest.$(
+						"getWireComponent",
+						componentObj,
+						false
+					);
 					wireRequest.hydrate();
 					expect( componentObj.$once( "$postHydrate" ) ).toBeTrue();
 				} );
@@ -513,7 +529,11 @@ component extends="coldbox.system.testing.BaseTestCase" {
 						];
 
 						componentObj.$( "setMessage", true );
-						wireRequest.$( "getWireComponent", componentObj, false );
+						wireRequest.$(
+							"getWireComponent",
+							componentObj,
+							false
+						);
 						wireRequest.hydrate();
 						expect( componentObj.$once( "setMessage" ) ).toBeTrue();
 						expect( componentObj.$callLog().setMessage[ 1 ][ 1 ] ).toBe( "We have input" );
@@ -532,7 +552,11 @@ component extends="coldbox.system.testing.BaseTestCase" {
 						];
 
 						componentObj.$( "whyAmIAwakeAt3am", true );
-						wireRequest.$( "getWireComponent", componentObj, false );
+						wireRequest.$(
+							"getWireComponent",
+							componentObj,
+							false
+						);
 						wireRequest.hydrate();
 						expect( componentObj.$once( "whyAmIAwakeAt3am" ) ).toBeTrue();
 					} );
@@ -548,7 +572,11 @@ component extends="coldbox.system.testing.BaseTestCase" {
 						];
 
 						expect( function(){
-							wireRequest.$( "getWireComponent", componentObj, false );
+							wireRequest.$(
+								"getWireComponent",
+								componentObj,
+								false
+							);
 							wireRequest.hydrate();
 						} ).toThrow( type = "WireActionNotFound" );
 					} );
@@ -567,7 +595,11 @@ component extends="coldbox.system.testing.BaseTestCase" {
 						];
 
 						componentObj.$( "resetName" );
-						wireRequest.$( "getWireComponent", componentObj, false );
+						wireRequest.$(
+							"getWireComponent",
+							componentObj,
+							false
+						);
 						wireRequest.hydrate();
 
 						var callLog = componentObj.$callLog()[ "resetName" ][ 1 ];
@@ -590,7 +622,11 @@ component extends="coldbox.system.testing.BaseTestCase" {
 						];
 
 						componentObj.$( "setName", true );
-						wireRequest.$( "getWireComponent", componentObj, false );
+						wireRequest.$(
+							"getWireComponent",
+							componentObj,
+							false
+						);
 						wireRequest.hydrate();
 
 						var passedArgs = componentObj.$callLog()[ "setName" ][ 1 ];
